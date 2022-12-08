@@ -1,0 +1,16 @@
+@font-face {
+    font-family: myfont;
+    src: url(./../font/rr.ttf);
+}
+
+body{
+    background-color: #000;
+    color:	white;
+}
+
+.quiz{
+
+    font-family:myfont;
+
+
+}

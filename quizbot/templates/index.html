@@ -1,9 +1,98 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock link %}
 {% block content %}
-<h1>Welcome to quizapp!</h1>
+
+
+<link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+
+<div class="container mt-2">
+    <h2 class="quiz text-center">Quiz <i class="fa-solid fa-robot"></i>  Bot</h2>
+</div>
+
+<div class="container mt-2">
+
+    {% include 'core/navbar.html' %}
+
+</div>
 
 
 
- {% include 'core/navbar.html' %}
+{% comment %} card  {% endcomment %}
+
+<div class="container mt-2">
+
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="card mt-3">
+                <h5 class="card-header text-dark">Featured</h5>
+                <div class="card-body">
+                  <h5 class="card-title text-dark">Special title treatment</h5>
+                  <p class="card-text text-dark">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-outline-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6">
+            <img src="{% static 'core/img/s.svg' %}" alt="" class="img-fluid mx-4" width="300px" height="300px">
+        </div>
+
+       
+
+    </div>
+
+
+
+
+   <div class="row">
+    <div class="col-sm-6">
+       
+        <img src="{% static 'core/img/topic.svg' %}" alt="" class="img-fluid mx-4" width="300px" height="300px">
+
+    
+</div>
+    <div class="col-sm-6">
+        <div class="card mt-3">
+            <h5 class="card-header text-dark">Featured</h5>
+            <div class="card-body">
+              <h5 class="card-title text-dark">Special title treatment</h5>
+              <p class="card-text text-dark">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-outline-info">Go somewhere</a>
+            </div>
+          </div>
+    </div>
+
+  
+   </div>
+
+
+   <div class="row">
+
+    <div class="col-sm-6">
+        <div class="card mt-3">
+            <h5 class="card-header text-dark">Featured</h5>
+            <div class="card-body">
+              <h5 class="card-title text-dark">Special title treatment</h5>
+              <p class="card-text text-dark">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-outline-warning">Go somewhere</a>
+            </div>
+          </div>
+    </div>
+
+    <div class="col-sm-6">
+       
+        <img src="{% static 'core/img/info.svg' %}" alt="" class="img-fluid mx-4" width="300px" height="300px">
+
+    
+</div>
+   </div>
+
+
 {% endblock content %}
