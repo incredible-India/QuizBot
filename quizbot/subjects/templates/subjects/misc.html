@@ -1,0 +1,44 @@
+{% include 'subjects/admin.html'  with title="Misc"  no=number %}
+
+
+{% load static %}
+<div class="container mt-2">
+    
+    <p>Add Question</p>
+    <div class="row">
+
+        <div class="col-sm-6">
+            <textarea name="questions" id="quest" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+
+        <div class="col-sm-6">
+            <input type="text" placeholder="Option 1" class="form-control mt-2">
+            <input type="text" placeholder="Option 2" class="form-control mt-2">
+            <input type="text" placeholder="Option 3" class="form-control mt-2">
+            <input type="text" placeholder="Option 4" class="form-control mt-2">
+
+            <a href="" class="btn btn-primary mt-3">Add Question</a>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container mt-3">
+
+    {% if number == 0 %}
+    
+
+   <div class="container text-center mt-3">
+    <img src="{% static 'subjects/img/a.svg' %}" alt="" class="img-fluid">
+    <h3 class="mt-3">
+        No Questions Are There !!!!
+    </h3>
+   </div>
+
+    {% else %}
+    <h1>Hello</h1>
+
+    {% endif %}
+
+</div>

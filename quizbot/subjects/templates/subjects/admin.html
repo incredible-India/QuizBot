@@ -1,2 +1,37 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
+{% block title %}
+
+<title>Admin Page </title>
+{% endblock title %}
+{% block link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock link %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+<div class="container">
+    <div class="container mt-2">
+        <h2 class="quiz text-center"> <span style="color:red;">Q</span>uiz <i class="fa-solid fa-robot"></i>  <span style="color:red;">B</span>ot</h2>
+        <h3 class="text-center">Admin Page <i class="fas fa-cog"></i> </h3>
+    </div>
+</div>
+
+
+
+<div class="container mt-2">
+
+    <hr class='text-light'>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 class="text-light"> Category : {{title | upper}}</h3>
+        </div>
+
+        <div class="col-sm-6">
+            <h3 class="text-light"> Total Questions : {{no | upper}}</h3>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
