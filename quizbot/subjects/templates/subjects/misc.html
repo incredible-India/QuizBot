@@ -7,18 +7,24 @@
     <p>Add Question</p>
     <div class="row">
 
+      
+
+    
         <div class="col-sm-6">
-            <textarea name="questions" id="quest" cols="30" rows="10" class="form-control"></textarea>
+            <form action="" method="post">
+                {% csrf_token %}
+            <textarea name="question" id="quest" cols="30" rows="10" class="form-control"></textarea>
         </div>
 
         <div class="col-sm-6">
-            <input type="text" placeholder="Option 1" class="form-control mt-2">
-            <input type="text" placeholder="Option 2" class="form-control mt-2">
-            <input type="text" placeholder="Option 3" class="form-control mt-2">
-            <input type="text" placeholder="Option 4" class="form-control mt-2">
+            <input type="text" placeholder="Option 1" class="form-control mt-2" name='q1'>
+            <input type="text" placeholder="Option 2" class="form-control mt-2" name='q2'>
+            <input type="text" placeholder="Option 3" class="form-control mt-2" name='q3'>
+            <input type="text" placeholder="Option 4" class="form-control mt-2" name='q4'>
 
-            <a href="" class="btn btn-primary mt-3">Add Question</a>
+            <input type="submit" value="Add Question" class='btn btn-primary mt-3'>
         </div>
+       </form>
 
     </div>
 </div>
