@@ -7,13 +7,23 @@
     <p>Add Question</p>
     <div class="row">
 
+      {% if messages %}
       
+      {% for i in messages %}
+      
+      <div class="text-danger mt-2" role="alert">
+       *{{i}}
+       
+      </div>
+      {% endfor %}
+
+      {% endif %}
 
     
         <div class="col-sm-6">
             <form action="" method="post">
                 {% csrf_token %}
-            <textarea name="question" id="quest" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="question" id="quest" cols="30" rows="10" class="form-control" value={{question}}>{{question}}</textarea>
         </div>
 
         <div class="col-sm-6">
