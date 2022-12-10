@@ -52,7 +52,7 @@ class adminPage(View):
         #validation of question to be inserted 
 
         if len(question.strip()) <= 5:
-             messages.info(request,'Question Cannot be blank or less than 5 characters..')
+             messages.error(request,'Question Cannot be blank or less than 5 characters..')
 
              request.session['question'] = question
              request.session['q1'] = q1
@@ -63,9 +63,9 @@ class adminPage(View):
              return HttpResponseRedirect('/settings')
             
         elif len(q1.strip())<=0 or len(q2.strip()) <=0 or len(q3.strip()) <= 0 or len(q4.strip()) <= 0:
-            messages.info(request,'Option cannot be blank')
+            messages.error(request,'Option cannot be blank')
             request.session['question'] = question
-            messages.info(request,'Question Cannot be blank or less than 5 characters..')
+            
 
           
             request.session['q1'] = q1
@@ -74,13 +74,24 @@ class adminPage(View):
             request.session['q4'] = q4
             return HttpResponseRedirect('/settings')
         
-        del request.session['question']
-        del request.session['q1']
-        del request.session['q2']
-        del request.session['q3']
-        del request.session['q4']
+        if 'question' in request.session:
+
+            del request.session['question']
+        if 'q1' in request.session:
+            del request.session['q1']
+        if 'q2' in request.session:
+            del request.session['q2']
+        if 'q3' in request.session:
+            del request.session['q3']
+        if 'q4' in request.session:
+            del request.session['q4']
 
 
         
-        return HttpResponse(question)
+        Misc.objects.create(question=question,op1=q1,op2=q2,op3=q3,op4=q4).save()
+
+        messages.info(request,'Question Added Successfully')
+        return HttpResponseRedirect('/settings')
+
+
              

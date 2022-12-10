@@ -10,11 +10,23 @@
       {% if messages %}
       
       {% for i in messages %}
-      
-      <div class="text-danger mt-2" role="alert">
+      {% if i.tags == 'info' %}
+      <div class="text-success mt-2" role="alert">
        *{{i}}
+
+    </div>
+
+  
+       {% endif %}
        
+     {% if i.tags == 'error' %}
+     
+    
+     <div class="text-danger mt-2" role="alert">
+         *{{i}}
+  
       </div>
+     {% endif %}
       {% endfor %}
 
       {% endif %}
@@ -53,7 +65,39 @@
    </div>
 
     {% else %}
-    <h1>Hello</h1>
+
+
+    <table class="table table-dark">
+        <thead>
+          <tr>
+           
+            <th scope="col">Question</th>
+            <th scope="col">Opt 1</th>
+            <th scope="col">Opt 2</th>
+            <th scope="col">Opt 3</th>
+            <th scope="col">Opt 4</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+            {% for i in data %}
+            
+            <tr>
+                <th scope="row">{{i.question}}</th>
+                <td>{{i.op1}}</td>
+                <td>{{i.op2}}</td>
+                <td>{{i.op3}}</td>
+                <td>{{i.op4}}</td>
+                <td> <a href="{{i.slug}}" class="text-danger mx-2"> <i class="fa-solid fa-trash"></i> Delete</a> <a href="{{i.slug}}" class="text-info mx-2"> <i class="fas fa-pen"></i> Edit</a></td>
+                
+              </tr>
+            {% endfor %}
+        
+       
+        </tbody>
+      </table>
 
     {% endif %}
 
