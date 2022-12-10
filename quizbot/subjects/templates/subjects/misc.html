@@ -1,7 +1,9 @@
 {% include 'subjects/admin.html'  with title="Misc"  no=number %}
-
-
 {% load static %}
+
+<script src="{% static 'subjects/js/misc.js' %}"></script>
+
+
 <div class="container mt-2">
     
     <p>Add Question</p>
@@ -67,7 +69,9 @@
     {% else %}
 
 
-    <table class="table table-dark">
+    <input type="text" name="myinput" id="myInput" class="form-control mt-2" placeholder="Search Question" onkeyup='myFunction()'>
+
+    <table class="table table-dark mt-2" id='myTable' style="overflow-x: scroll;">
         <thead>
           <tr>
            
