@@ -13,13 +13,34 @@ class adminPage(View):
             question = request.session['question']
         else:
             question = ''
+        
+        if 'q1' in request.session:
+            q1 = request.session['q1']
+        else:
+            q1 = ''
+        if 'q2' in request.session:
+            q2 = request.session['q2']
+        else:
+            q2 = ''
+        if 'q3' in request.session:
+            q3 = request.session['q3']
+        else:
+            q3 = ''
+        if 'q4' in request.session:
+            q4 = request.session['q4']
+        else:
+            q4 = ''
 
   
         data = Misc.objects.all()
         return render(request, 'subjects/misc.html',{
         'data':data,
         'number' : len(data),
-        'question' : question
+        'question' : question,
+        'q1': q1,
+        'q2': q2,
+        'q3': q3,
+        'q4': q4
         })
     def post(self, request):
         question = request.POST.get('question')
@@ -34,13 +55,32 @@ class adminPage(View):
              messages.info(request,'Question Cannot be blank or less than 5 characters..')
 
              request.session['question'] = question
+             request.session['q1'] = q1
+             request.session['q2'] = q2
+             request.session['q3'] = q3
+             request.session['q4'] = q4
 
              return HttpResponseRedirect('/settings')
             
         elif len(q1.strip())<=0 or len(q2.strip()) <=0 or len(q3.strip()) <= 0 or len(q4.strip()) <= 0:
             messages.info(request,'Option cannot be blank')
             request.session['question'] = question
+            messages.info(request,'Question Cannot be blank or less than 5 characters..')
+
+          
+            request.session['q1'] = q1
+            request.session['q2'] = q2
+            request.session['q3'] = q3
+            request.session['q4'] = q4
             return HttpResponseRedirect('/settings')
+        
+        del request.session['question']
+        del request.session['q1']
+        del request.session['q2']
+        del request.session['q3']
+        del request.session['q4']
+
+
         
         return HttpResponse(question)
              
