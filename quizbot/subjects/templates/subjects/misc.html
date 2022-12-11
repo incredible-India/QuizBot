@@ -1,7 +1,7 @@
 {% include 'subjects/admin.html'  with title="Misc"  no=number %}
 {% load static %}
 
-<script src="{% static 'subjects/js/misc.js' %}"></script>
+<script src="{% static 'subjects/js/misc.js' %}" differ></script>
 
 
 <div class="container mt-2">
@@ -71,6 +71,25 @@
 
     <input type="text" name="myinput" id="myInput" class="form-control mt-2" placeholder="Search Question" onkeyup='myFunction()'>
 
+
+    {% if messages %}
+    
+
+    {% for k in messages %}
+    
+    {% if k.tags == success %}
+    
+    <div class="mt-2 text-success">
+
+        {{k}}
+
+    </div>
+    
+    {% endif %}
+    {% endfor %}
+    
+    {% endif %}
+
     <table class="table table-dark mt-2" id='myTable' style="overflow-x: scroll;">
         <thead>
           <tr>
@@ -94,7 +113,7 @@
                 <td>{{i.op2}}</td>
                 <td>{{i.op3}}</td>
                 <td>{{i.op4}}</td>
-                <td> <a href="{{i.slug}}" class="text-danger mx-2"> <i class="fa-solid fa-trash"></i> Delete</a> <a href="{{i.slug}}" class="text-info mx-2"> <i class="fas fa-pen"></i> Edit</a></td>
+                <td> <a href="delete/{{i.slug}}" class="text-danger mx-2"> <i class="fa-solid fa-trash"></i> Delete</a> <a href="edit/{{i.slug}}" class="text-info mx-2"> <i class="fas fa-pen"></i> Edit</a></td>
                 
               </tr>
             {% endfor %}

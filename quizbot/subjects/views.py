@@ -94,4 +94,38 @@ class adminPage(View):
         return HttpResponseRedirect('/settings')
 
 
-             
+
+
+
+
+#for deleting the question of Misc .objects.
+
+class deleteQuestion(View):
+    def get(self, request,data):
+
+        isExist = Misc.objects.filter(slug=data)
+
+
+        if isExist.exists():
+            isExist.delete()
+            messages.success(request,"Question Deleted Successfully")
+            return HttpResponseRedirect('/settings')
+
+        else:
+            return HttpResponse("<h1> Something Went Wrong...Err101")
+
+
+
+
+#edit misc question     
+
+class EditQuestion(View):
+    def get(self, request,data):
+
+        isExist = Misc.objects.filter(slug=data)
+
+        if isExist.exists():
+            ques = Misc.objects.get(slug=data)
+            return render(request, 'subjects/editmsc.html',{'data':isExist,'ques':ques})
+        else:
+            return HttpResponse('Something Went Wrong !!!! Err102')

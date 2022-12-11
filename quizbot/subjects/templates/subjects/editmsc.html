@@ -1,0 +1,100 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+
+<title>Edit Misc Question</title>
+{% endblock title %}
+
+{% block link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% endblock link %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+<div class="container">
+    <div class="container mt-2">
+        <h2 class="quiz text-center"> <span style="color:red;">Q</span>uiz <i class="fa-solid fa-robot"></i>  <span style="color:red;">B</span>ot</h2>
+        <h3 class="text-center">Admin Page <i class="fas fa-cog"></i> </h3>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="mt-2">
+
+        <p>Edit Question Misc</p>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+
+            <p>Question</p>
+
+           {% if data %}
+           
+          {% for i in data %}
+          <p>Q. {{i.question}}</p>
+          {% endfor %}
+           
+           {% else %}
+           <p class='text-danger'>DataBase Error</p>
+           {% endif %}
+
+        </div>
+
+        <div class="col-sm-6">
+            <p>Options</p>
+
+            {% if data %}
+            
+           {% for i in data %}
+           <p>op1-> {{i.op1}}</p>
+           <p>op2-> {{i.op2}}</p>
+           <p>op3-> {{i.op3}}</p>
+           <p>Qp4-> {{i.op4}}</p>
+           {% endfor %}
+            
+            {% else %}
+            <p class='text-danger'>DataBase Error</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container">
+    <form action="">
+
+
+        <div class="row mt-2">
+            <div class="col-sm-6">
+                <textarea name="question" id="question" class='form-control' cols="30" rows="10" >{{ques.question}}</textarea>
+
+
+            </div>
+
+            <div class="col-sm-6">
+                <input type="text" name="op1" value={{ques.op1}}  class="form-control mt-2">
+                <input type="text" name="op2" value={{ques.op2}}  class="form-control mt-2">
+                <input type="text" name="op3" value={{ques.op3}}  class="form-control mt-2">
+                <input type="text" name="op4" value={{ques.op4}}  class="form-control mt-2">
+
+                <input type="submit" value="Edit" class="btn btn-primary mt-2">
+            </div>
+        </div>
+    
+    </form>
+</div>
+
+
+<div class="mt-2 container">
+    <p>Please Read The Question Carefully Before Final Submit.</p>
+</div>
+
+{% endblock content %}
