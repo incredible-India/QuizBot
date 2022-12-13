@@ -38,6 +38,10 @@
            
           {% for i in data %}
           <p>Q. {{i.question}}</p>
+
+          <div class="mt-3">
+            <a href="{% url 'miscadmin' %}" class="text-info">GO BACK TO THE ADMIN PAGE</a>
+          </div>
           {% endfor %}
            
            {% else %}
@@ -69,7 +73,9 @@
 
 
 <div class="container">
-    <form action="">
+    <form action="" method='post'>
+
+        {% csrf_token %}
 
 
         <div class="row mt-2">
@@ -80,12 +86,12 @@
             </div>
 
             <div class="col-sm-6">
-                <input type="text" name="op1" value={{ques.op1}}  class="form-control mt-2">
-                <input type="text" name="op2" value={{ques.op2}}  class="form-control mt-2">
-                <input type="text" name="op3" value={{ques.op3}}  class="form-control mt-2">
-                <input type="text" name="op4" value={{ques.op4}}  class="form-control mt-2">
+                <input type="text" name="q1" value={{ques.op1}}  class="form-control mt-2">
+                <input type="text" name="q2" value={{ques.op2}}  class="form-control mt-2">
+                <input type="text" name="q3" value={{ques.op3}}  class="form-control mt-2">
+                <input type="text" name="q4" value={{ques.op4}}  class="form-control mt-2">
 
-                <input type="submit" value="Edit" class="btn btn-primary mt-2">
+                <input type="submit" value="Edit Question" class="btn btn-primary mt-2">
             </div>
         </div>
     

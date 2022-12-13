@@ -60,7 +60,7 @@ class adminPage(View):
              request.session['q3'] = q3
              request.session['q4'] = q4
 
-             return HttpResponseRedirect('/settings')
+             return HttpResponseRedirect('/settings/misc/')
             
         elif len(q1.strip())<=0 or len(q2.strip()) <=0 or len(q3.strip()) <= 0 or len(q4.strip()) <= 0:
             messages.error(request,'Option cannot be blank')
@@ -72,7 +72,7 @@ class adminPage(View):
             request.session['q2'] = q2
             request.session['q3'] = q3
             request.session['q4'] = q4
-            return HttpResponseRedirect('/settings')
+            return HttpResponseRedirect('/settings/misc/')
         
         if 'question' in request.session:
 
@@ -91,7 +91,7 @@ class adminPage(View):
         Misc.objects.create(question=question,op1=q1,op2=q2,op3=q3,op4=q4).save()
 
         messages.info(request,'Question Added Successfully')
-        return HttpResponseRedirect('/settings')
+        return HttpResponseRedirect('/settings/misc/')
 
 
 
@@ -109,7 +109,7 @@ class deleteQuestion(View):
         if isExist.exists():
             isExist.delete()
             messages.success(request,"Question Deleted Successfully")
-            return HttpResponseRedirect('/settings')
+            return HttpResponseRedirect('/settings/misc/')
 
         else:
             return HttpResponse("<h1> Something Went Wrong...Err101")
@@ -129,3 +129,56 @@ class EditQuestion(View):
             return render(request, 'subjects/editmsc.html',{'data':isExist,'ques':ques})
         else:
             return HttpResponse('Something Went Wrong !!!! Err102')
+
+    
+    def post(self, request,data):
+        question = request.POST.get('question')
+        q1=request.POST.get('q1')
+        q2=request.POST.get('q2')
+        q3=request.POST.get('q3')
+        q4=request.POST.get('q4')
+
+        #validation of question to be inserted 
+
+        if len(question.strip()) <= 5:
+             messages.error(request,'Question Cannot be blank or less than 5 characters..')
+
+             request.session['question'] = question
+             request.session['q1'] = q1
+             request.session['q2'] = q2
+             request.session['q3'] = q3
+             request.session['q4'] = q4
+
+             return HttpResponseRedirect('/settings/misc/edit' + data)
+            
+        elif len(q1.strip())<=0 or len(q2.strip()) <=0 or len(q3.strip()) <= 0 or len(q4.strip()) <= 0:
+            messages.error(request,'Option cannot be blank')
+            request.session['question'] = question
+            
+
+          
+            request.session['q1'] = q1
+            request.session['q2'] = q2
+            request.session['q3'] = q3
+            request.session['q4'] = q4
+            return HttpResponseRedirect('/settings/misc/edit' + data)
+        
+        if 'question' in request.session:
+
+            del request.session['question']
+        if 'q1' in request.session:
+            del request.session['q1']
+        if 'q2' in request.session:
+            del request.session['q2']
+        if 'q3' in request.session:
+            del request.session['q3']
+        if 'q4' in request.session:
+            del request.session['q4']
+
+
+        
+        k=Misc.objects.filter(slug=data)
+        k.update(question=question,op1=q1,op2=q2,op3=q3,op4=q4)
+
+        messages.info(request,'Question Added Successfully')
+        return HttpResponseRedirect('/settings/misc/edit/' + data)

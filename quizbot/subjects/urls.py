@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     
-    path('', views.adminPage.as_view(),name='admin'),
-    path('delete/<slug:data>/', views.deleteQuestion.as_view(),name='deleteMisc'),
-    path('edit/<slug:data>/', views.EditQuestion.as_view(),name='editMisc'),
+    path('misc/', views.adminPage.as_view(),name='miscadmin'),
+    path('misc/delete/<slug:data>/', views.deleteQuestion.as_view(),name='deleteMisc'),
+    path('misc/edit/<slug:data>/', views.EditQuestion.as_view(),name='editMisc'),
 ]
